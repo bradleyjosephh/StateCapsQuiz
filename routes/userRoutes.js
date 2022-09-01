@@ -34,6 +34,7 @@ router.post("/users/login", (req, res) => {
   });
 });
 
+// posts to db after completing a quiz
 router.post("/users/scores", passport.authenticate("jwt"), (req, res) => {
   Score.create({
     value: req.body.value,
@@ -47,6 +48,7 @@ router.post("/users/scores", passport.authenticate("jwt"), (req, res) => {
     });
 });
 
+// getting all scores associated with the user
 router.get("/users/scores", passport.authenticate("jwt"), (req, res) => {
   Score.findAll({
     where: { uid: req.user.id },
@@ -55,6 +57,7 @@ router.get("/users/scores", passport.authenticate("jwt"), (req, res) => {
     .catch((err) => console.log(err));
 });
 
+// delete or "reset" scores
 router.delete("/users/scores", passport.authenticate("jwt"), (req, res) => {
   Score.destroy({
     where: { uid: req.user.id },

@@ -236,15 +236,11 @@ const newGame = () => {
   <li data-value ="3" class="list-group-item">${questionsArray[next].choice3}</li>
   <li data-value ="4" class="list-group-item">${questionsArray[next].choice4}</li>
     </ul>
-    
-    
-    
-    
     `;
   document.getElementById("questions").append(stateQuestions);
 };
 
-// Feedback for right and wrong answers adds to score and removes time for incorrect answers
+// Feedback for right and wrong answers adds to score
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("list-group-item")) {
     var userChoice = event.target.getAttribute("data-value");
@@ -264,7 +260,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// hides the list and prompts user to enter initials to save high score
+// hides the list and gives user the option to save score
 function showResults() {
   document.getElementById("go").style.display = "none";
   document.getElementById("right").style.display = "none";
@@ -275,8 +271,6 @@ function showResults() {
     `;
 
   document.getElementById("saveScore").addEventListener("click", (event) => {
-    console.log("ping");
-    console.log(score);
     event.preventDefault();
     const newScore = {
       value: score,
