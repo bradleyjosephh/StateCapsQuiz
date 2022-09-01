@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="flex">
+  <a href="/index.html">Home</a>
+  <a href="/register.html">Register</a>
+  <a href="/login.html">Login</a>
+  <a href="/highscore.html">High Scores</a>
+  </nav>
+
+<form>
+  <p>
+    <label for="username">username</label>
+    <input type="text" name="username" id="username">
+  </p>
+  <p>
+    <label for="password">password</label>
+    <input type="text" name="password" id="password">
+  </p>
+  <button class="btn btn-success" id="login">Login</button>
+</form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+
+  <script>
+
+
+    document.getElementById("login").addEventListener('click', event => {
+      event.preventDefault()
+      const oldUser = {
+        username: document.getElementById("username").value,
+        password: document.getElementById('password').value
+      }
+       axios.post('/api/users/login', oldUser)
+        .then(res => {
+          console.log(res.data)
+          localStorage.setItem('token', res.data)
+          window.location = "/"
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    })
+
+   
+  </script>
+</body>
+</html>

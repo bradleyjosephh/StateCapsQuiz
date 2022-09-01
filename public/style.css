@@ -1,0 +1,10 @@
+.flex {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+}
+
+.flex a {
+  text-decoration: none;
+}
