@@ -1,3 +1,4 @@
+//Score model for a user
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../db");
 

@@ -24,6 +24,7 @@ router.post("/users/register", (req, res) => {
   );
 });
 
+// login post to give user token to sign in
 router.post("/users/login", (req, res) => {
   User.authenticate()(req.body.username, req.body.password, (err, user) => {
     if (err) {

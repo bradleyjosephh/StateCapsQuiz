@@ -39,13 +39,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
 
+// click to register new user and post the registration to the database
     document.getElementById('addUser').addEventListener('click', event => {
       event.preventDefault()
       const newUser = {
         username: document.getElementById('username').value,
         password: document.getElementById("password").value
       }
-      
+
       axios.post('/api/users/register', newUser)
         .then(res => {
           console.log(res)

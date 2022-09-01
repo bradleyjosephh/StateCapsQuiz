@@ -34,7 +34,7 @@
         crossorigin="anonymous"></script>
     <script>
 
-
+// retrieve the score data check if user is logged in before displaying the score in a div
         axios.get('/api/users/scores', {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -48,7 +48,8 @@
                 `
             })
         })
-
+        
+// click function to delete scores
         document.getElementById("reset").addEventListener('click', event => {
             axios.delete('/api/users/scores', {
                 headers: {
@@ -63,10 +64,6 @@
                 console.log(err)
             })
         })
-
-        
-
-
     </script>
 
 </body>

@@ -301,9 +301,9 @@ const totalArray = [
     answer: 2,
     id: 30,
   }
-  
 ];
 
+// randomly selects a question by looping through the question array 10 times until 10 questions have been attempted
 let questionsArray = [];
 let idArray = [];
 for (let index = 0; index <= 9; index++) {
@@ -371,6 +371,7 @@ function showResults() {
     
     `;
 
+    // click function for user posting their scores to the db makes sure to check for token before post
   document.getElementById("saveScore").addEventListener("click", (event) => {
     event.preventDefault();
     const newScore = {
