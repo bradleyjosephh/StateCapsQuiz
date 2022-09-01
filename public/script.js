@@ -361,12 +361,12 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// hides the list and gives user the option to save score
+// hides the list of questions and gives user the option to save score
 function showResults() {
   document.getElementById("go").style.display = "none";
   document.getElementById("right").style.display = "none";
   questions.innerHTML = `
-    <h6>Your Score:${score}</h6>
+    <h3>Your Score:${score}</h3>
     <button id="saveScore" class="btn btn-success">Save your score!</button>
     
     `;
