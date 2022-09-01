@@ -163,7 +163,7 @@ const totalArray = [
   },
   {
     //17
-    question: "What is the capital in California",
+    question: "What is the capital in California?",
     choice1: "Sacramento",
     choice2: "Oklahoma City",
     choice3: "Sante Fe",
@@ -193,7 +193,7 @@ const totalArray = [
   },
   {
     //20
-    question: "What is the capital of South Carolina",
+    question: "What is the capital of South Carolina?",
     choice1: "Dover",
     choice2: "Jackson",
     choice3: "Columbia",
@@ -201,6 +201,107 @@ const totalArray = [
     answer: 3,
     id: 20,
   },
+  {
+    //21
+    question: "Colorado has what city as its capital?",
+    choice1: "Denver",
+    choice2: "Tallahassee",
+    choice3: "Sacramento",
+    choice4: "Springfield",
+    answer: 1,
+    id: 21,
+  },
+  {
+    //22
+    question: "What is the capital of Maine?",
+    choice1: "Augusta",
+    choice2: "Boston",
+    choice3: "Austin",
+    choice4: "Annapolis",
+    answer: 1,
+    id: 22,
+  },
+  {
+    //23
+    question: "What is the capital of Missouri?",
+    choice1: "Jefferson City",
+    choice2: "Trenton",
+    choice3: "Honolulu",
+    choice4: "Juneau",
+    answer: 1,
+    id: 23,
+  },
+  {
+    //24
+    question: "_____ is the capital of Massachusetts",
+    choice1: "Atlanta",
+    choice2: "Boston",
+    choice3: "Harrisburg",
+    choice4: "Springfield",
+    answer: 2,
+    id: 24,
+  },
+  {
+    //25
+    question: "What is the capital of Wisconsin?",
+    choice1: "Lansing",
+    choice2: "Raleigh",
+    choice3: "Madison",
+    choice4: "Lincoln",
+    answer: 3,
+    id: 25,
+  },
+  {
+    //26
+    question: "What is the capital of the state of Minnesota?",
+    choice1: "Salem",
+    choice2: "Boise",
+    choice3: "Saint Paul",
+    choice4: "Santa Fe",
+    answer: 3,
+    id: 26,
+  },
+  {
+    //27
+    question: "What is the capital of Kentucky?",
+    choice1: "Dover",
+    choice2: "Jackson",
+    choice3: "Columbia",
+    choice4: "Montgomery",
+    answer: 4,
+    id: 27,
+  },
+  {
+    //28
+    question: "Illinois has _____ as its capital city",
+    choice1: "Bismarck",
+    choice2: "Providence",
+    choice3: "Springfield",
+    choice4: "Salt Lake City",
+    answer: 3,
+    id: 28,
+  },
+  {
+    //29
+    question: "What is the capital of New Hampshire?",
+    choice1: "Charleston",
+    choice2: "Olympia",
+    choice3: "Richmond",
+    choice4: "Concord",
+    answer: 4,
+    id: 29,
+  },
+  {
+    //30
+    question: "What is the capital city of the state of Montana?",
+    choice1: "Little Rock",
+    choice2: "Helena",
+    choice3: "Baton Rouge",
+    choice4: "Jackson",
+    answer: 2,
+    id: 30,
+  }
+  
 ];
 
 let questionsArray = [];

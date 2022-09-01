@@ -5,7 +5,6 @@ class Score extends Model {}
 
 Score.init(
   {
-    //true for request, false its an offer
     value: DataTypes.INTEGER,
   },
   { sequelize, modelName: "score" }
