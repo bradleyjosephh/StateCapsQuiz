@@ -58,6 +58,15 @@ router.get("/users/scores", passport.authenticate("jwt"), (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.get("/users/scores/public/:username", (req, res) => {
+  User.findOne({
+    where: { username: req.params.username },
+    include: [Score],
+  })
+    .then((scores) => res.json(scores))
+    .catch((err) => console.log(err));
+});
+
 // delete or "reset" scores
 router.delete("/users/scores", passport.authenticate("jwt"), (req, res) => {
   Score.destroy({
