@@ -51,7 +51,7 @@ router.post("/users/scores", passport.authenticate("jwt"), (req, res) => {
 
 // getting all scores associated with the user
 router.get("/users/scores", passport.authenticate("jwt"), (req, res) => {
-  Score.findAll({
+  Score.find({
     where: { uid: req.user.id },
   })
     .then((scores) => res.json(scores))
@@ -69,7 +69,7 @@ router.get("/users/scores/public/:username", (req, res) => {
 
 // delete or "reset" scores
 router.delete("/users/scores", passport.authenticate("jwt"), (req, res) => {
-  Score.destroy({
+  Score.deleteMany({
     where: { uid: req.user.id },
   })
     .then((scores) => {

@@ -1,48 +1,37 @@
-require("dotenv").config();
+require('dotenv').config()
 
-const express = require("express");
-const { join } = require("path");
-const passport = require("passport");
+const express = require('express')
+const { join } = require('path')
+const passport = require('passport')
 const { Strategy: LocalStrategy } = require('passport-local')
-const { Strategy: JWTStrategy, ExtractJwt } = require("passport-jwt");
+const { Strategy: JWTStrategy, ExtractJwt } = require('passport-jwt')
 
-const app = express();
-const { User, Score } = require("./models");
+const app = express()
+const { User, Score } = require('./models')
 
-app.use(express.static(join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.static(join(__dirname, 'public')))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 
 passport.use(new LocalStrategy(User.authenticate()))
-passport.use(User.createStrategy());
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
-passport.deserializeUser((id, done) => {
-  User.findOne({ id })
-    .then((user) => done(null, user))
-    .catch((err) => done(err, null));
-});
+passport.use(new JWTStrategy({
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.SECRET
+}, ({ id }, cb) => User.findById(id)
+  .populate('Scores') 
+  .then(user => cb(null, user))
+  .catch(err => cb(err))))
 
-passport.use(
-  new JWTStrategy(
-    {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: process.env.SECRET,
-    },
-    ({ id }, cb) =>
-      User.findOne({ where: { id }, include: [Score] })
-        .then((user) => cb(null, user))
-        .catch((err) => cb(err))
-  )
-);
+app.use(require('./routes'))
 
-app.use(require("./routes"));
+app.get('*', (req, res) => res.sendFile(join(__dirname, 'public', 'index.html')))
 
-  require('./db')
+require('./db')
   .then(() => app.listen(process.env.PORT || 3000))
   .catch(err => console.log(err))

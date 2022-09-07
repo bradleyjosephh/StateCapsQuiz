@@ -13,7 +13,7 @@ const { Schema, model } = require('mongoose')
 const User = new Schema({
 
   username: String,
-  Score: [{
+  Scores: [{
     type: Schema.Types.ObjectId,
     ref: 'Score'
   }],
