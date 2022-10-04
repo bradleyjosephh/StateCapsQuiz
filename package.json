@@ -18,7 +18,9 @@
     "sequelize": "^6.6.2"
   },
   "scripts": {
-    "build": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'build script executed'",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
