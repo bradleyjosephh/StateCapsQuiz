@@ -17,24 +17,34 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(System.DefaultWorkingDirectory)'
+    sourceFolder: '$(Build.SourcesDirectory)'
     contents: '*.tgz' 
-    targetFolder: $(System.DefaultWorkingDirectory)/npm
+    targetFolder: $(Build.ArtifactStagingDirectory)/npm
   displayName: 'Copy npm package'
 
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: 'package.json' 
-    targetFolder: $(System.DefaultWorkingDirectory)/npm
+    targetFolder: $(Build.ArtifactStagingDirectory)/npm
   displayName: 'Copy package.json'   
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/npm'
+    targetPath: '$(Build.ArtifactStagingDirectory)/npm'
     artifactName: npm
   displayName: 'Publish npm artifact'
-
+  
+- task: AzureRmWebAppDeployment@4
+  inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Visual Studio Professional Subscription (bcb2c927-419d-45b0-8326-d8f1d81d3d0d)'
+      appType: 'webApp'
+      WebAppName: 'StateCapsQuiz'
+      deployToSlotOrASE: true
+      ResourceGroupName: 'AzureTest'
+      SlotName: 'production'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 - script: |
     npm install
     npm run build
