@@ -17,21 +17,21 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
+    sourceFolder: '$(System.DefaultWorkingDirectory)'
     contents: '*.tgz' 
-    targetFolder: $(Build.ArtifactStagingDirectory)/npm
+    targetFolder: $(System.DefaultWorkingDirectory)/npm
   displayName: 'Copy npm package'
 
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: 'package.json' 
-    targetFolder: $(Build.ArtifactStagingDirectory)/npm
+    targetFolder: $(System.DefaultWorkingDirectory)/npm
   displayName: 'Copy package.json'   
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/npm'
+    targetPath: '$(System.DefaultWorkingDirectory)/npm'
     artifactName: npm
   displayName: 'Publish npm artifact'
 
