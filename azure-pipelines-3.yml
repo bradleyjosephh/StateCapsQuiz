@@ -49,5 +49,5 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: 'AzureTest'
     slotName: 'production'
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     deploymentMethod: 'auto'
